@@ -1,0 +1,284 @@
+/* =========================================
+   1. ROOT VARIABLES (Elevated Shadow)
+   ========================================= */
+:root {
+    --bg-color: #ffffff;          
+    --bg-task-color: #ffffff;     
+    --primary: #44475b;           
+    --heading-accent: #059669;    /* Changed to Forest Green to match the amount */
+    --bg-button-color: #00d09c;   
+    --border-color: #f0f0f0;      
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.04); 
+    --delete-color: #dc2626;      
+    --success-color: #059669;     
+    --button-text: #ffffff;       
+
+    --nav-padding: 1rem 2rem;
+    --section-padding: 1rem 2rem;
+    --padding-s: 5px;
+    --padding-m: 10px;
+    --padding-l: 15px;
+    --padding-xl: 20px;
+    --padding-xxl: 30px;
+
+    --border-radius-s: 5px;
+    --border-radius-m: 10px;
+    --border-radius-l: 15px;
+    --border-radius-xl: 20px;
+    --border-radius-xxl: 30px;
+}
+
+/* =========================================
+   2. GLOBAL RESETS
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+}
+
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--nav-padding);
+    background-color: var(--bg-task-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111111; 
+    cursor: default; 
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #7c7e8c; 
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+    cursor: pointer; 
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: #111111; 
+}
+
+/* =========================================
+   4. LAYOUT & GRID (Wide Ledger)
+   ========================================= */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--section-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-xxl);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-tier {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--padding-xxl);
+}
+
+.history-section.full-width {
+    width: 100%;
+}
+
+/* =========================================
+   5. CARDS & ELEVATION
+   ========================================= */
+.summary-card, 
+.form-section, 
+.chart-section, 
+.history-section {
+    background-color: var(--bg-task-color);
+    padding: var(--padding-xl);
+    border-radius: var(--border-radius-m);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow); 
+}
+
+.chart-section {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    min-height: 250px; 
+}
+
+.chart-section canvas {
+    width: 100% !important;
+    max-width: 100%;
+    margin-top: var(--padding-m);
+}
+
+/* =========================================
+   6. HEADINGS & SUMMARY TOTAL
+   ========================================= */
+/* Form, Chart, and History Headings */
+.form-section h3, 
+.chart-section h3, 
+.history-section h3 {
+    color: var(--heading-accent);
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--padding-m);
+    margin-bottom: var(--padding-l);
+}
+
+/* Summary Card Layout */
+.summary-card {
+    text-align: center;
+    min-width: 350px; 
+    padding: var(--padding-xl) var(--padding-xxl);
+}
+
+/* Updated: Now matches the green section headings */
+.summary-card h2 {
+    font-size: 1.25rem;
+    color: var(--heading-accent); 
+    font-weight: 600;
+    margin-bottom: var(--padding-s);
+}
+
+/* The $0.00 Amount */
+#total-balance {
+    font-size: 3rem; 
+    color: var(--success-color);
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* =========================================
+   7. FORMS & INPUTS
+   ========================================= */
+.form-control {
+    margin-bottom: var(--padding-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
+}
+
+.form-control label {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 500;
+    cursor: default;
+}
+
+input, select {
+    padding: var(--padding-m);
+    background-color: #fafafa; 
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-s);
+    font-family: inherit;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+input { cursor: text; }
+select { cursor: pointer; }
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--bg-button-color); 
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 208, 156, 0.1); 
+}
+
+/* =========================================
+   8. BUTTONS
+   ========================================= */
+button {
+    width: 100%;
+    padding: var(--padding-m);
+    background-color: var(--bg-button-color);
+    color: var(--button-text);
+    border: none; 
+    border-radius: var(--border-radius-s);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover:not(:disabled) { background-color: #00b386; }
+button:active:not(:disabled) { transform: scale(0.98); }
+button:disabled { cursor: not-allowed; opacity: 0.5; background-color: #ccc; }
+
+/* =========================================
+   9. TRANSACTION HISTORY LIST
+   ========================================= */
+#transaction-list {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto; 
+    padding-right: var(--padding-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
+}
+
+#transaction-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--padding-m);
+    background-color: #fafafa;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-s);
+}
+
+.delete-btn {
+    width: auto;
+    padding: var(--padding-s) var(--padding-m);
+    background-color: transparent;
+    color: var(--delete-color);
+    border: 1px solid var(--delete-color);
+}
+
+.delete-btn:hover:not(:disabled) {
+    background-color: var(--delete-color);
+    color: var(--button-text);
+}
+
+/* =========================================
+   10. RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+    .action-tier { grid-template-columns: 1fr; }
+    .main-nav { flex-direction: column; gap: var(--padding-m); }
+}
